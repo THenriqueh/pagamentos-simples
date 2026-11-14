@@ -2,6 +2,7 @@ package com.sistema.pagamentos.adapter.out.persistence;
 
 import com.sistema.pagamentos.domain.model.Pagamento;
 import com.sistema.pagamentos.domain.port.out.PagamentoRepositoryPort;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
@@ -11,9 +12,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Adapter de saída: guarda os pagamentos em memória.
- * Pode ser trocado por um banco de dados sem alterar o domínio.
+ * Usado só no perfil "memoria", para rodar a aplicação sem banco de dados.
  */
 @Repository
+@Profile("memoria")
 public class PagamentoRepositoryEmMemoria implements PagamentoRepositoryPort {
 
     private final Map<UUID, Pagamento> pagamentos = new ConcurrentHashMap<>();

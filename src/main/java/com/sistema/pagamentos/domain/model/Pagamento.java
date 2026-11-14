@@ -46,6 +46,19 @@ public class Pagamento {
     }
 
     /**
+     * Reconstrói um pagamento já salvo (usado pelo adapter de persistência).
+     * Não valida de novo, porque os dados já foram validados na criação.
+     */
+    public static Pagamento reconstituir(UUID id, BigDecimal valor, String remetente, String destinatario,
+                                         UUID chaveIdempotencia, StatusPagamento status,
+                                         LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
+        var pagamento = new Pagamento(id, valor, remetente, destinatario,
+                chaveIdempotencia, status, criadoEm);
+        pagamento.atualizadoEm = atualizadoEm;
+        return pagamento;
+    }
+
+    /**
      * Muda o status respeitando a máquina de estados.
      */
     public void transicionarPara(StatusPagamento novoStatus) {
