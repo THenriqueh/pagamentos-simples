@@ -75,6 +75,8 @@ Para rodar **sem Docker**, com os dados só em memória:
 
 Com a aplicação rodando, acesse **http://localhost:8080/swagger** para testar os endpoints pelo navegador.
 
+As evidências desses testes (prints do Swagger, ligados aos casos de teste CT-01 a CT-09) estão na pasta [`evidencias`](evidencias/README.md).
+
 Pagamentos de exemplo da carga inicial:
 
 | ID | Valor | Status | Sugestão de teste |
